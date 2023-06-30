@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="./libs/angular.min.js"></script>
+    <script src="./libs/angular-route.min.js"></script>
+    <script src="./controllers/HomeController.js"></script>
+    <script src="./controllers/CategoryController.js"></script>
+    <script src="./controllers/RoomController.js"></script>
+    <script src="./controllers/SearchController.js"></script>
+    <script src="./controllers/ContactController.js"></script>
+    <script src="./controllers/SaleController.js"></script>
+    <link rel="shortcut icon" href="./img/logo.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <div ng-app="app-route">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                  <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                      <li class="nav-item">
+                        <a class="nav-link active fw-semibold" aria-current="page" href="#!/">Giới Thiệu</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active fw-semibold" href="#!/search">Tìm Kiếm Phòng</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link active fw-semibold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Loại Phòng
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#!/categories">Category 1</a></li>
+                          <li><a class="dropdown-item" href="#!/categories">Category 2</a></li>
+                          <li><a class="dropdown-item" href="#!/categories">Category 3</a></li>
+                          <li><a class="dropdown-item" href="#!/categories">Category 4</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active fw-semibold" href="#!/contact">Liên Hệ</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active fw-semibold" href="#!/sale">Khuyến Mãi</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+        </header>
+        <main>
+            <!-- dinh nghia khu vuc view se duoc render ra -->
+            <article ng-view>
+
+            </article>
+        </main>
+        <footer>
+            <div style="background-color: #A9A9A9;">
+                <div class="container">
+                    <div class="row mt-5">
+                        <div class="col-lg-12">
+                            <div class="text-center p-3 mt-4">
+                                <button type="button" class="btn btn-light p-2">Đăng ký chỗ nghỉ của Quý Vị</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Phiên Bản Di Động</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Tài khoản của bạn</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Thay đổi đặt phòng của bạn trực tuyến</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Dịch vụ khách hàng</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Trở thành đối tác phân phối</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <p class="fw-bolder text-white">Booking.com dành cho doanh nghiệp</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #F0F0F0; color: #696969;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 mt-4">
+                            <p>Các quốc gia</p>
+                            <p>Khu vực</p>
+                            <p>Thành phố</p>
+                            <p>Quận</p>
+                            <p>Sân bay</p>
+                            <p>Khách sạn</p>
+                            <p>Địa điểm được quan tâm</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 mt-4">
+                            <p>Nhà</p>
+                            <p>Căn hộ</p>
+                            <p>Resort</p>
+                            <p>Biệt thự</p>
+                            <p>Nhà trọ</p>
+                            <p>Nhà nghỉ B&B</p>
+                            <p>Nhà khách</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 mt-4">
+                            <p>Những chỗ nghỉ độc đáo</p>
+                            <p>Tất cả các điểm đến</p>
+                            <p>Tất cả các điểm đến có chuyến bay</p>
+                            <p>Đánh giá của khách</p>
+                            <p>Khám phá lưu trú theo tháng</p>
+                            <p>Ưu đãi theo mùa và dịp lễ</p>
+                            <p>Traveller Review Awards</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 mt-4">
+                            <p>Booking.com dành cho Đại Lý Du Lịch</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 mt-4">
+                            <p>Các câu hỏi thường gặp về virus corona (COVID-19)</p>
+                            <p>Về Booking.com</p>
+                            <p>Dịch vụ khách hàng</p>
+                            <p>Trợ giúp đối tác</p>
+                            <p>Careers</p>
+                            <p>Du lịch bền vững</p>
+                            <p>Truyền thông</p>
+                            <p>Trung tâm thông tin bảo mật</p>
+                            <p>Quan hệ cổ đông</p>
+                            <p>Điều khoản và điều kiện</p>
+                            <p>Tranh chấp đối tác</p>
+                            <p>Chúng tôi hoạt động như thế nào</p>
+                            <p>Thông báo về Bảo mật & Cookie</p>
+                            <p>Chính sách MSA</p>
+                            <p>Liên hệ công ty</p><br><br>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-secondary p-2">Đăng nhập vào extranet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="mt-4 mb-4">Bản quyền © 1996–2023 Booking.com™. Bảo lưu mọi quyền.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="text-center mb-3">Booking.com là một phần của Booking Holdings Inc., tập đoàn đứng đầu thế giới về du lịch trực tuyến và các dịch vụ liên quan.</p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-2 mb-4">
+                        <img src="./img/f1.png" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="./img/f2.png" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="./img/f3.png" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="./img/f4.png" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="./img/f5.png" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="./img/f6.png" alt="">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+    angular.module('app-route', ['ngRoute']).config(function ($routeProvider) {
+        $routeProvider.when('/', {
+            templateUrl: 'views/home.html',
+            controller: HomeController
+        }).when('/search', {
+            templateUrl: 'views/search.html',
+            controller: SearchController
+        }).when('/categories', {
+            templateUrl: 'views/category.html',
+            controller: CategoryController
+        }).when('/room', {
+            templateUrl: 'views/room.html',
+            controller: RoomController
+        }).when('/contact', {
+            templateUrl: 'views/contact.html',
+            controller: ContactController
+        }).when('/sale', {
+            templateUrl: 'views/sale.html',
+            controller: SaleController
+        })
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

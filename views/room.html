@@ -1,0 +1,376 @@
+<div class="container">
+    <div class="d-grid gap-2 d-md-flex justify-content-center mt-5">
+        <button class="btn mx-2" type="button" style="background-color: #AFEEEE;">
+            <p class="mt-3 fw-semibold" style="color: #00008B;">Thông tin & giá</p>
+        </button>
+        <button class="btn mx-2" type="button" style="background-color: #AFEEEE;">
+            <p class="mt-3 fw-semibold" style="color: #00008B;">Tiện nghi</p>
+        </button>
+        <button class="btn mx-2" type="button" style="background-color: #AFEEEE;">
+            <p class="mt-3 fw-semibold" style="color: #00008B;">Quy tắc chung</p>
+        </button>
+        <button class="btn mx-2" type="button" style="background-color: #AFEEEE;">
+            <p class="mt-3 fw-semibold" style="color: #00008B;">Đánh giá của khách(892)</p>
+        </button>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-4">
+            <div class="alert alert-primary" role="alert" style="background-color: #FFD700;border: none;color:#383838">
+                <form action="" class="needs-validation" name="myForm" novalidate>
+                    <h2 class="fw-bold mb-3" style="color: #383838;">Đặt Phòng</h2>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Họ và Tên</label>
+                        <input type="text" name="ten" class="form-control" placeholder="Le Lan Anh" ng-model="inputValue.ten"
+                            ng-pattern="/^[a-zA-ZÀ-ỹ ]+$/">
+                        <p ng-if="kiemtradulieu.ten == true" style="color: red;" class="mx-2 mt-2">Họ tên không được để
+                            trống.
+                        </p>
+                        <p ng-show="myForm.ten.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập tên phải là chữ.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">CMND</label>
+                        <input type="text" name="cmnd" class="form-control" placeholder="010088872364" ng-model="inputValue.cmnd"
+                            ng-pattern="/^0\d{8}$|^0\d{11}$/">
+                        <p ng-if="kiemtradulieu.cmnd == true" style="color: red;" class="mx-2 mt-2">CMND không được để
+                            trống.
+                        </p>
+                        <p ng-show="myForm.cmnd.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập số cmnd phải là số và giới hạn 9 hoặc 12 ký tự số.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Số điện thoại</label>
+                        <input type="text" name="phoneNumber" class="form-control" placeholder="0524764312"
+                            ng-model="inputValue.sdt" ng-pattern="/^(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})$/">
+                        <p ng-if="kiemtradulieu.sdt == true" style="color: red;" class="mx-2 mt-2">Số điện thoại không
+                            được để trống.</p>
+                        <p ng-show="myForm.phoneNumber.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập số điện thoại đúng định dạng (đầu 03,05,07,08,09).</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="examp@gmail.com"
+                            ng-model="inputValue.email" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/">
+                        <p ng-if="kiemtradulieu.email == true" style="color: red;" class="mx-2 mt-2">Email không
+                            được để trống.</p>
+                        <p ng-show="myForm.email.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập email đúng định dạng (ví dụ: examp12@gmail.com).</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Ngày đến</label>
+                        <input type="text" name="ngayden" class="form-control" ng-model="inputValue.ngayden" placeholder="dd/mm/YY" ng-pattern="/^\d{2}/\d{2}/\d{4}$/">
+                        <p ng-if="kiemtradulieu.ngayden == true" style="color: red;" class="mx-2 mt-2">Ngày đến không
+                            được để trống.</p>
+                        <p ng-show="myForm.ngayden.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập ngày đến theo định dạng dd/mm/YY.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Ngày trả</label>
+                        <input type="text" name="ngaytra" class="form-control" ng-model="inputValue.ngaytra" placeholder="dd/mm/YY" ng-pattern="/^\d{2}/\d{2}/\d{4}$/">
+                        <p ng-if="kiemtradulieu.ngaytra == true" style="color: red;" class="mx-2 mt-2">Ngày trả không
+                            được để trống.</p>
+                        <p ng-show="myForm.ngaytra.$error.pattern" style="color: red;" class="mx-2 mt-2">Vui lòng
+                            nhập ngày trả theo định dạng dd/mm/YY.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Hình thức thanh toán</label>
+                        <select class="form-select" ng-model="inputValue.thanhtoan">
+                            <option value="Thanh toán tại khách sạn">Thanh toán tại khách sạn</option>
+                            <option value="Thanh toán qua vnpay">Thanh toán qua vnpay</option>
+                            <option value="Thanh toán qua ngân hàng">Thanh toán qua ngân hàng</option>
+                        </select>
+                        <p ng-if="kiemtradulieu.thanhtoan == true" style="color: red;" class="mx-2 mt-2">Hinh thức thanh
+                            toán không được để trống.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-3 mb-2" ng-click="onSubmitForm()">Đặt Phòng</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="mb-3">
+                <div class="row mt-2">
+                    <div class="col-lg-12 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-secondary">Khách sạn</button>
+                        <img src="img/1.svg" alt="" width="3%">
+                        <img src="img/1.svg" alt="" width="3%">
+                        <img src="img/1.svg" alt="" width="3%">
+                        <img src="img/2.svg" alt="" width="3%" class="mx-2">
+                        <button type="button" class="btn btn-outline-secondary">Xe đưa đón tại sân bay</button>
+                        <button type="button" class="btn btn-success">Chỗ nghỉ du lịch bền vững</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h2 class="fw-bold" style="color: #383838;">Room 1 & Hotel</h2><br>
+                <p style="color: #696969;"> 512 Trần Khát Chân,P.Phố Huế, Hai Bà Trưng,Hà Nội – <a
+                        href="https://www.google.com/maps/place/512+Tr%E1%BA%A7n+Kh%C3%A1t+Ch%C3%A2n,+Ph%E1%BB%91+Hu%E1%BA%BF,+Hai+B%C3%A0+Tr%C6%B0ng,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.008816,105.850783,17z/data=!3m1!4b1!4m6!3m5!1s0x3135abf536678d0d:0xecd5d2bb622de97b!8m2!3d21.008811!4d105.8529717!16s%2Fg%2F11rnv65wl7"
+                        class="link-primary">Xem vị trí trên bản đồ</a></p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="img/r13.jpg" alt="" width="100%">
+                    <img src="img/r14.jpg" alt="" width="100%" class="mt-3">
+                </div>
+                <div class="col-lg-8">
+                    <img src="img/r15.jpg" alt="" width="100%">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-2">
+                    <img src="img/r1.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-2">
+                    <img src="img/r2.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-2">
+                    <img src="img/r3.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-2">
+                    <img src="img/r4.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-2">
+                    <img src="img/r5.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-2">
+                    <div class="card text-bg-dark" style="border: none;">
+                        <img src="img/r6.jpg" alt="..." width="100%">
+                        <div class="card-img-overlay">
+                            <p class="card-title text-center fw-bold text-dark fs-3"> + 9</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-12">
+            <table class="table table-primary text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Họ và Tên</th>
+                        <th scope="col">CMND</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ngày đến</th>
+                        <th scope="col">Ngày trả</th>
+                        <th scope="col">Hình thức thanh toán</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ds in info">
+                        <th scope="row">
+                            <p class="mt-2">{{ds.id}}</p>
+                        </th>
+                        <td>
+                            <p class="mt-2">{{ds.ten}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.cmnd}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.sdt}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.email}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.ngayden | date}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.ngaytra}}</p>
+                        </td>
+                        <td>
+                            <p class="mt-2">{{ds.thanhtoan}}</p>
+                        </td>
+                        <td><button ng-click="onEdit(ds.id)" type="button" class="btn btn-success">Sửa</button><button
+                                ng-click="onDelete(ds.id)" type="button" class="btn btn-danger mx-2">Xóa</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-8">
+            <p class="mb-3" style="color: #696969;">Bạn đủ điều kiện nhận giảm giá Genius tại Sapa Relax Hotel &
+                Spa! Để tiết kiệm tại chỗ nghỉ này, bạn chỉ cần <a href="#" class="link-primary">Đăng Nhập</a></p>
+            <p class="mb-3" style="color: #696969;">Tọa lạc tại thị xã Sa Pa, cách Ga cáp treo Fansipan Legend 5,4
+                km, Sapa Relax Hotel & Spa cung cấp chỗ nghỉ với khu vườn, chỗ đỗ xe riêng miễn phí, sảnh khách
+                chung và sân hiên. Khách sạn 3 sao này có nhà hàng và phòng nghỉ gắn máy điều hòa với WiFi miễn phí
+                cùng phòng tắm riêng. Chỗ nghỉ cung cấp dịch vụ phòng, dịch vụ lễ tân 24 giờ và dịch vụ thu đổi
+                ngoại tệ cho khách.</p>
+            <p class="mb-3" style="color: #696969;">Tất cả phòng nghỉ tại Sapa Relax Hotel & Spa đều được trang bị
+                tủ lạnh, minibar, ấm đun nước, vòi xịt/chậu rửa vệ sinh, đồ vệ sinh cá nhân miễn phí, bàn làm việc,
+                tủ để quần áo và TV màn hình phẳng. Một số phòng có ban công. Các phòng được bố trí ga trải giường
+                và khăn tắm.</p>
+            <p class="mb-3" style="color: #696969;">Các điểm tham quan nổi tiếng gần chỗ nghỉ bao gồm Hồ Sa Pa, Nhà
+                thờ Đá Sa Pa và Bến xe Sa Pa. Sân bay gần nhất là sân bay Wenshan Puzhehei, nằm trong bán kính 221
+                km từ Sapa Relax Hotel & Spa, và chỗ nghỉ cung cấp dịch vụ đưa đón sân bay với một khoản phụ phí.
+            </p>
+            <p class="mb-5" style="color: #696969;">Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm <a href=""
+                    class="link-primary">9,6</a> cho kỳ nghỉ dành cho 2 người.</p>
+            <h3 class="fw-bold" style="color: #383838;">Relax Hotel & Spa đã chào đón khách Booking.com từ 18 tháng
+                1 2018.</h3>
+            <p class="fw-bold fs-4" style="color: #383838;">Các tiện nghi được ưa chuộng nhất</p>
+            <div class="alert alert-secondary" role="alert">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/3.svg" alt="" width="5%">
+                                    <p class="mt-3 mx-2">Wi-Fi miễn phí</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/602136-8bc34a.svg" alt="" width="6%">
+                                    <p class="mt-3 mx-2">Xe đưa đón sân bay</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/home.svg" alt="" width="5%">
+                                    <p class="mt-3 mx-2">Phòng gia đình</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/48797-8bc34a.svg" alt="" width="6%">
+                                    <p class="mt-3 mx-2">Trung tâm Spa & chăm sóc sức khỏe</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/602136-8bc34a.svg" alt="" width="6%">
+                                    <p class="mt-3 mx-2">Đỗ xe miễn phí</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/home.svg" alt="" width="5%">
+                                    <p class="mt-3 mx-2">Lễ Mường Tân 24h</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/25061-8bc34a.svg" alt="" width="6%">
+                                    <p class="mt-3 mx-2">Mường Hoa</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/98786-8bc34a.svg" alt="" width="7%">
+                                    <p class="mt-3 mx-2">Phòng không hút thuốc</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/304167-8bc34a.svg" alt="" width="6%">
+                                    <p class="mt-3 mx-2">Dịch vụ phòng</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <img src="img/1902863-8bc34a.svg" alt="" width="5%">
+                                    <p class="mt-3 mx-2">Quầy bar</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5962408824344!2d105.85078301502921!3d21.00881599383451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abf536678d0d%3A0xecd5d2bb622de97b!2zNTEyIFRy4bqnbiBLaMOhdCBDaMOibiwgUGjhu5EgSHXhur8sIEhhaSBCw6AgVHLGsG5nLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679382835133!5m2!1svi!2s"
+                width="100%" height="425" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="alert alert-primary mt-3" role="alert" style="color: #383838;">
+                <h3 class=" mx-2 mt-3 fw-bold text-dark mb-3">Điểm nổi bật của chỗ nghỉ</h3>
+                <div class="d-flex align-self-center">
+                    <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    <p class="mx-2 mt-4" style="color: #696969;">Địa điểm hàng đầu: Được khách gần đây đánh giá cao
+                        (9,5 điểm)</p>
+                </div>
+                <div class="d-flex align-self-center">
+                    <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    <p class="mx-2 mt-4" style="color: #696969;">Có bãi đậu xe riêng miễn phí ở khách sạn này</p>
+                </div>
+                <button type="button" class="btn btn-primary mx-2 mb-3 mt-4">Đặt Ngay</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h2 class="fw-bold fst-italic mb-3" style="color: #383838;">Đánh Giá Của Khách</h2>
+            <p class="fw-bold fs-4" style="color: #383838;">Hạng mục</p>
+            <div class="row" style="color: #383838;">
+                <div class="col-lg-4">
+                    <label for="" class="fw-semibold mt-3 mb-2">Nhân Viên phục vụ
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 95%">95%</div>
+                    </div>
+                    <label for="" class="fw-semibold mt-3 mb-2">Thoải mái
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 95%">95%</div>
+                    </div>
+                    <label for="" class="fw-semibold mt-3 mb-2">Wifi miễn phí
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 95%">95%</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label for="" class="fw-semibold mt-3 mb-2">Tiện nghi
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 95%">95%</div>
+                    </div>
+                    <label for="" class="fw-semibold mt-3 mb-3">Đáng giá tiền
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 95%">95%</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label for="" class="fw-semibold mt-3 mb-2">Sạch sẽ
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 95%">95%</div>
+                    </div>
+                    <label for="" class="fw-semibold mt-3 mb-2">Địa điểm
+                        <img src="img/304167-8bc34a.svg" alt="" width="5%">
+                    </label>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="95"
+                        aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar" style="width: 95%">95%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <button type="button" class="btn btn-outline-primary">Đọc tất cả các đánh giá</button>
+            </div><br><br><br>
+        </div>
+    </div>
+</div>
